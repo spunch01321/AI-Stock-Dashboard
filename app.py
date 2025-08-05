@@ -86,7 +86,7 @@ if ticker:
 
             # GPT summary
             try:
-                prompt = f"Summarize the following stock market news article in 2-3 sentences:
+                prompt = f"Summarize the following stock market news article in 2-3 sentences:"
 
 Title: {title}
 
