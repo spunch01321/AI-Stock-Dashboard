@@ -86,11 +86,11 @@ if ticker:
 
             # GPT summary
             try:
-                prompt = f"Summarize the following stock market news article in 2-3 sentences:"
-
-Title: {title}
-
-Content: "{description or content}"
+                prompt = (
+                    f"Summarize the following stock market news article in 2-3 sentences:\n\n"
+                    f"Title: {title}\n\n"
+                    f"Content: {description or content}"
+                )
                 response = openai.ChatCompletion.create(
                     model="gpt-4",
                     messages=[{"role": "user", "content": prompt}]
