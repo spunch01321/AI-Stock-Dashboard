@@ -105,3 +105,24 @@ if ticker:
             st.write("---")
     else:
         st.warning("No news articles found or API limit reached.")
+
+# Options Chain Viewer
+st.subheader("🧾 Options Chain Viewer")
+
+try:
+    options_dates = stock.options
+    if options_dates:
+        expiry = st.selectbox("Choose Expiration Date", options_dates)
+        opt_chain = stock.option_chain(expiry)
+
+        option_type = st.radio("Select Option Type", ["Calls", "Puts"])
+        data = opt_chain.calls if option_type == "Calls" else opt_chain.puts
+
+        st.dataframe(data[[
+            "contractSymbol", "strike", "bid", "ask",
+            "lastPrice", "impliedVolatility", "volume", "openInterest"
+        ]].sort_values("strike"), use_container_width=True)
+    else:
+        st.info("No options data available for this stock.")
+except Exception as e:
+    st.error(f"Failed to load options data: {e}")
