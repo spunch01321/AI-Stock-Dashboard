@@ -90,7 +90,7 @@ if ticker:
 
 Title: {title}
 
-Content: {description or content}"
+Content: "{description or content}"
                 response = openai.ChatCompletion.create(
                     model="gpt-4",
                     messages=[{"role": "user", "content": prompt}]
