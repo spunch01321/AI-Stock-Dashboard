@@ -5,3 +5,6 @@ transformers
 requests
 openai
 torch
+pandas
+numpy
+scikit-learn
